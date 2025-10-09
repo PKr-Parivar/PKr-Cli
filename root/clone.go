@@ -23,7 +23,7 @@ import (
 	"github.com/PKr-Parivar/PKr-Base/pb"
 	"github.com/PKr-Parivar/PKr-Base/utils"
 
-	"github.com/ButterHost69/kcp-go"
+	"github.com/PKr-Parivar/kcp-go"
 )
 
 const DATA_CHUNK = handler.DATA_CHUNK
