@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/ButterHost69/PKr-Base/config"
-	"github.com/ButterHost69/PKr-Base/dialer"
-	"github.com/ButterHost69/PKr-Base/pb"
+	"github.com/PKr-Parivar/PKr-Base/config"
+	"github.com/PKr-Parivar/PKr-Base/dialer"
+	"github.com/PKr-Parivar/PKr-Base/pb"
 )
 
 func ListAllWorkspaces() {

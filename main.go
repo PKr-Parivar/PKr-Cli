@@ -8,8 +8,8 @@ import (
 
 	"strings"
 
-	"github.com/ButterHost69/PKr-Base/utils"
-	"github.com/ButterHost69/PKr-Cli/root"
+	"github.com/PKr-Parivar/PKr-Base/utils"
+	"github.com/PKr-Parivar/PKr-Cli/root"
 	"github.com/pkg/profile"
 	// _ "net/http/pprof" // Temp Profile Import - Remove Later
 )

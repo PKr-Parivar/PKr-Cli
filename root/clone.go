@@ -14,14 +14,14 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ButterHost69/PKr-Base/config"
-	"github.com/ButterHost69/PKr-Base/dialer"
-	"github.com/ButterHost69/PKr-Base/encrypt"
-	"github.com/ButterHost69/PKr-Base/filetracker"
-	"github.com/ButterHost69/PKr-Base/handler"
-	"github.com/ButterHost69/PKr-Base/models"
-	"github.com/ButterHost69/PKr-Base/pb"
-	"github.com/ButterHost69/PKr-Base/utils"
+	"github.com/PKr-Parivar/PKr-Base/config"
+	"github.com/PKr-Parivar/PKr-Base/dialer"
+	"github.com/PKr-Parivar/PKr-Base/encrypt"
+	"github.com/PKr-Parivar/PKr-Base/filetracker"
+	"github.com/PKr-Parivar/PKr-Base/handler"
+	"github.com/PKr-Parivar/PKr-Base/models"
+	"github.com/PKr-Parivar/PKr-Base/pb"
+	"github.com/PKr-Parivar/PKr-Base/utils"
 
 	"github.com/ButterHost69/kcp-go"
 )
