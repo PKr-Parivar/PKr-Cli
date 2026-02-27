@@ -15,9 +15,9 @@ import (
 )
 
 var (
-	IS_PROF            = false
-	PROFILE            interface{ Stop() }
-	PROFILE_ARGS       []func(*profile.Profile)
+	IS_PROF      = false
+	PROFILE      interface{ Stop() }
+	PROFILE_ARGS []func(*profile.Profile)
 )
 
 func printArguments() {
@@ -36,51 +36,80 @@ func main() {
 		return
 	}
 
-	cmd := strings.ToLower(os.Args[1])
+	cmd := make([]string, len(os.Args))
+	for i := 0; i < len(os.Args); i++ {
+		cmd[i] = strings.ToLower(os.Args[i])
+	}
 
-	args := os.Args
-	if cmd == "debug" {
+	INDEX := 1
+	if cmd[INDEX] == "debug" {
 		fmt.Println("[DEBUG MODE is ON]")
-		if len(args) > 2 && args[1] == "debug" {
-			for i, arg := range args {
-				if arg == "--fp" && i+1 < len(args) {
-					fmt.Println("[DEBUG] Setting Debug Config File Path: ", args[i+1])
-					utils.SetUserConfigDir(args[i+1])
-					cmd = os.Args[i+2]
-				} else if arg == "--prof.cpu" && i+1 < len(args) {
+		if len(os.Args) > 2 && os.Args[1] == "debug" {
+			for i, arg := range os.Args {
+				if arg == "--fp" && i+1 < len(os.Args) {
+					fmt.Println("[DEBUG] Setting Debug Config File Path: ", os.Args[i+1])
+					utils.SetUserConfigDir(os.Args[i+1])
+
+					INDEX = i + 2
+				} else if arg == "--prof.cpu" && i+1 < len(os.Args) {
 					IS_PROF = true
 
-					fmt.Println("[DEBUG] Generating CPU Profiles at: ", args[i+1])
+					fmt.Println("[DEBUG] Generating CPU Profiles at: ", os.Args[i+1])
 
 					PROFILE_ARGS = append(PROFILE_ARGS, profile.CPUProfile)
-					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(args[i+1]))
+					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(os.Args[i+1]))
 
-					cmd = os.Args[i+2]
-				} else if arg == "--prof.mem" && i+1 < len(args) {
+					INDEX = i + 2
+				} else if arg == "--prof.mem" && i+1 < len(os.Args) {
 					IS_PROF = true
 
-					fmt.Println("[DEBUG] Generating CPU Profiles at: ", args[i+1])
+					fmt.Println("[DEBUG] Generating CPU Profiles at: ", os.Args[i+1])
 
 					PROFILE_ARGS = append(PROFILE_ARGS, profile.MemProfile)
 					PROFILE_ARGS = append(PROFILE_ARGS, profile.MemProfileRate(1))
-					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(args[i+1]))
+					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(os.Args[i+1]))
 
-					cmd = os.Args[i+2]
-				} else if arg == "--prof.trace" && i+1 < len(args) {
+					INDEX = i + 2
+				} else if arg == "--prof.trace" && i+1 < len(os.Args) {
 					IS_PROF = true
 
-					fmt.Println("[DEBUG] Generating CPU Profiles at: ", args[i+1])
+					fmt.Println("[DEBUG] Generating CPU Profiles at: ", os.Args[i+1])
 					PROFILE_ARGS = append(PROFILE_ARGS, profile.TraceProfile)
-					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(args[i+1]))
+					PROFILE_ARGS = append(PROFILE_ARGS, profile.ProfilePath(os.Args[i+1]))
 
-					cmd = os.Args[i+2]
+					INDEX = i + 2
 				}
 
 			}
 		}
 	}
 
-	switch cmd {
+	// Set Command Line Arguments
+	// Current :
+	// 		1. --cpath=<file-path>  ;;  Set config-path when executing cmd
+
+	for i := INDEX + 1; i < len(os.Args)-INDEX + 1; i++ {
+		if strings.Contains(cmd[i], "--cpath") {
+			out := strings.Split(cmd[i], "=")
+			if len(out) != 2 {
+				fmt.Println("Error: --cpath values is not properly provided")
+				fmt.Println("example: --cpath=<filepath>")
+				return
+			}
+
+			err := utils.SetUserConfigDir(out[1])
+			if err != nil {
+				fmt.Printf("Error while Setting user-config to %s: %v\n", out[1], err)
+				fmt.Println("Source: Install()")
+				return
+			}
+
+			fmt.Println("[DEBUG] install_path is set: ", out)
+			fmt.Println("[DEBUG] !! Keep in Mind !! This is where the services will look for Config File")
+		}
+	}
+
+	switch cmd[INDEX] {
 	case "install":
 		{
 			var server_ip, username, password string
