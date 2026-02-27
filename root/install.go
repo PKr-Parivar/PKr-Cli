@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/PKr-Parivar/PKr-Base/config"
@@ -15,6 +17,17 @@ import (
 const CONTEXT_TIMEOUT = 60 * time.Second
 
 func Install(server_ip, username, password string) {
+	out := strings.Split(server_ip, ":")
+	grpcPort, err := strconv.Atoi(out[1])
+	if err != nil {
+		fmt.Println("Error while converting grpc port addr to int:", err)
+		fmt.Println("Source: Install()")
+		return
+	}
+
+	// This is now serverip only - eg. 192.168.1.1
+	server_ip = out[0]
+
 	user_config_file_path, err := utils.GetUserConfigFilePath()
 	if err != nil {
 		fmt.Println("Error while Getting Path of user-config:", err)
@@ -41,7 +54,8 @@ func Install(server_ip, username, password string) {
 
 	fmt.Println("Registering User, Sending Request to Server ...")
 	// New GRPC Client
-	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(server_ip)
+	grpcAddr := fmt.Sprintf("%s:%d", server_ip, grpcPort)
+	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(grpcAddr)
 	if err != nil {
 		fmt.Println("Error:", err)
 		fmt.Println("Description: Cannot Create New GRPC Client")
@@ -60,7 +74,7 @@ func Install(server_ip, username, password string) {
 	defer cancelFunc()
 
 	// Sending Request ...
-	_, err = gRPC_cli_service_client.Register(ctx, req)
+	resp, err := gRPC_cli_service_client.Register(ctx, req)
 	if err != nil {
 		fmt.Println("Error:", err)
 		fmt.Println("Description: Cannot Register User")
@@ -68,8 +82,12 @@ func Install(server_ip, username, password string) {
 		return
 	}
 
+	if int(resp.WsPort) == 0 {
+		fmt.Println("[WARNING] returned ws_port by server is 0. Source: Install()")
+	}
+
 	// Add Credentials to Config
-	err = config.CreateUserConfigIfNotExists(username, password, server_ip)
+	err = config.CreateUserConfigIfNotExists(username, password, server_ip, grpcPort, int(resp.WsPort))
 	if err != nil {
 		fmt.Println("Error while Adding Credentials to user-config:", err)
 		fmt.Println("Source: Install()")

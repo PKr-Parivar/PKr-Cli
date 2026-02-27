@@ -88,7 +88,7 @@ func main() {
 	// Current :
 	// 		1. --cpath=<file-path>  ;;  Set config-path when executing cmd
 
-	for i := INDEX + 1; i < len(os.Args)-INDEX + 1; i++ {
+	for i := INDEX + 1; i < len(os.Args)-INDEX+1; i++ {
 		if strings.Contains(cmd[i], "--cpath") {
 			out := strings.Split(cmd[i], "=")
 			if len(out) != 2 {
@@ -105,7 +105,7 @@ func main() {
 			}
 
 			fmt.Println("[DEBUG] install_path is set: ", out)
-			fmt.Println("[DEBUG] !! Keep in Mind !! This is where the services will look for Config File")
+			fmt.Println("[DEBUG] !! Keep in Mind !! This is where the services will have to look for Config File.")
 		}
 	}
 
