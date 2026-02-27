@@ -3,7 +3,7 @@ module github.com/PKr-Parivar/PKr-Cli
 go 1.24.0
 
 require (
-	github.com/PKr-Parivar/PKr-Base v0.0.0-20260227100539-13b5a41be326
+	github.com/PKr-Parivar/PKr-Base v0.0.0-20260227165122-30c0a82a3070
 	github.com/PKr-Parivar/kcp-go v1.0.14
 	github.com/pkg/profile v1.7.0
 )

@@ -344,7 +344,8 @@ func Clone(workspace_owner_username, workspace_name, workspace_password string) 
 	}
 
 	// Connecting to Workspace Owner
-	client_handler_name, workspace_owner_ip, udp_conn, kcp_conn, err := connectToAnotherUser(workspace_name, workspace_owner_username, user_conf.ServerIP, user_conf.Username, user_conf.Password)
+	grpcAddr := fmt.Sprintf("%s:%d",user_conf.ServerIP, user_conf.ServergRPCPort)
+	client_handler_name, workspace_owner_ip, udp_conn, kcp_conn, err := connectToAnotherUser(workspace_name, workspace_owner_username, grpcAddr, user_conf.Username, user_conf.Password)
 	if err != nil {
 		fmt.Println("Error while Connecting to Another User:", err)
 		fmt.Println("Source: Clone()")
@@ -435,7 +436,7 @@ func Clone(workspace_owner_username, workspace_name, workspace_password string) 
 	// Register New User to Workspace
 	// New GRPC Client
 	fmt.Println("Sending Updates to Server ...")
-	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(user_conf.ServerIP)
+	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(grpcAddr)
 	if err != nil {
 		fmt.Println("Error:", err)
 		fmt.Println("Description: Cannot Create New GRPC Client")

@@ -2,12 +2,10 @@ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 git.sr.ht/~jackmordaunt/go-toast v1.1.2 h1:/yrfI55LRt1M7H1vkaw+NaH1+L1CDxrqDltwm5euVuE=
 git.sr.ht/~jackmordaunt/go-toast v1.1.2/go.mod h1:jA4OqHKTQ4AFBdwrSnwnskUIIS3HYzlJSgdzCKqfavo=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260226130014-cc4fb7f897aa h1:P8GS671U32rXGQnQ3wiqqUtKHTU+cRLV9/z5t7/ks2M=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260226130014-cc4fb7f897aa/go.mod h1:jgb29QZjkDlkZBrITC6RTYFvkOajlAMEAPZd3LnIndc=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260227092112-1a43c9f4b461 h1:rTLkb38LsPI+B8lV9UwlLZ1oCkO97ljt+2T5I0sBxls=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260227092112-1a43c9f4b461/go.mod h1:jgb29QZjkDlkZBrITC6RTYFvkOajlAMEAPZd3LnIndc=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260227100539-13b5a41be326 h1:QKEbZYMKeXkiFewd4MQq4ua6DeCBQoJoux1Itl6Tv84=
-github.com/PKr-Parivar/PKr-Base v0.0.0-20260227100539-13b5a41be326/go.mod h1:jgb29QZjkDlkZBrITC6RTYFvkOajlAMEAPZd3LnIndc=
+github.com/PKr-Parivar/PKr-Base v0.0.0-20260227103301-368b537cbe8d h1:kvcYBb3klaoqCQdlLrgdRZ7DB2tg9BEXYDf/VTmGGkU=
+github.com/PKr-Parivar/PKr-Base v0.0.0-20260227103301-368b537cbe8d/go.mod h1:jgb29QZjkDlkZBrITC6RTYFvkOajlAMEAPZd3LnIndc=
+github.com/PKr-Parivar/PKr-Base v0.0.0-20260227165122-30c0a82a3070 h1:lukkppVp5eMrkK3Yu1ryTeciPjeNhbQbMBpdD37RR9U=
+github.com/PKr-Parivar/PKr-Base v0.0.0-20260227165122-30c0a82a3070/go.mod h1:jgb29QZjkDlkZBrITC6RTYFvkOajlAMEAPZd3LnIndc=
 github.com/PKr-Parivar/kcp-go v1.0.14 h1:9n0RIWJrVv0Gi6bJrTkO8yFOWcCvr9hxtApaYqKbsik=
 github.com/PKr-Parivar/kcp-go v1.0.14/go.mod h1:p3WIkcASHlT9AlrjUv5VH9Hijd6Vn+9yw52YKBLjb9s=
 github.com/ccding/go-stun v0.1.5 h1:qEM367nnezmj7dv+SdT52prv5x6HUTG3nlrjX5aitlo=

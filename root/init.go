@@ -150,8 +150,9 @@ func InitWorkspace(workspace_password, push_desc string) {
 	}
 
 	// Create New gRPC Client
+	grpcAddr := fmt.Sprintf("%s:%d",user_conf.ServerIP, user_conf.ServergRPCPort)
 	fmt.Println("Sending Init Workspace Request to Server ....")
-	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(user_conf.ServerIP)
+	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(grpcAddr)
 	if err != nil {
 		fmt.Println("Error:", err)
 		fmt.Println("Description: Cannot Create New GRPC Client")

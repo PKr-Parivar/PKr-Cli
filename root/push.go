@@ -210,7 +210,8 @@ func Push(workspace_name, push_desc string) {
 
 	// New GRPC Client
 	fmt.Println("Registering Push & Notifying Listeners ...")
-	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(user_conf.ServerIP)
+	grpcAddr := fmt.Sprintf("%s:%d",user_conf.ServerIP, user_conf.ServergRPCPort)
+	gRPC_cli_service_client, err := dialer.GetNewGRPCClient(grpcAddr)
 	if err != nil {
 		fmt.Println("Error:", err)
 		fmt.Println("Description: Cannot Create New GRPC Client")
