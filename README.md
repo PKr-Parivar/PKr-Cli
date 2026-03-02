@@ -113,6 +113,7 @@ Required Fields:
 ![receivers's side ss1](/assets/push_receiver.png "PKr Push Receiver POV")
 
 **Notification**
+
 ![receivers's side ss2](/assets/push_receiver_notify.png "PKr Push Receiver Notification POV")
 
 ### 3.4 List all Workspace
