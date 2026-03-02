@@ -4,7 +4,7 @@ PKr is a peer-to-peer workspace sharing and synchronization tool written in Go.
 It allows users to share, clone, and push workspaces directly between machines — with encryption — through a central coordination server but without routing file data through it.
 
 ### Q. Why should you use ?
-- In situations for 1 sender- N reciever data transfer over the internet with automatic synchronization.
+- In situations for 1 sender - N reciever data transfer over the internet with automatic synchronization.
 
    Example: Automatically Sharing Homeworks & Practicals with your classmates 😀
 
@@ -24,11 +24,7 @@ It allows users to share, clone, and push workspaces directly between machines �
 - [ ] Test the P2P reliability on different ISPs
 - [ ] Simplify the Punching and Connection Establishment Logic
 - [ ] Verify provided changes via hash during PUSH/PULL
-
-> [!IMPORTANT]
-> For troubleshooting and monitoring, logs are stored in :
->  - Windows : %APPDATA%/Local/PKr/Logs
->  - Linux : ~/.local/share/PKr/Logs
+- [ ] Do some Benchmarking
 
 ## 2. Installation
 
@@ -127,3 +123,8 @@ PKr-Cli.exe list
 
 ## 4. Bugs & Issues
 For any bugs & issues you can post about it in the **issues** with the Log file & steps to reproduce it.
+
+> [!IMPORTANT]
+> For troubleshooting and monitoring, logs are stored in :
+>  - Windows : %APPDATA%/Local/PKr/Logs
+>  - Linux : ~/.local/share/PKr/Logs
